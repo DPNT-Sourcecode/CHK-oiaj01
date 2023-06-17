@@ -29,4 +29,3 @@ def compute(x: NumberLike, y: NumberLike) -> NumberLike:
     assert all([isinstance(x, (int, float)), isinstance(y, (int, float))]), "Inputs must be ints or floats."
 
     return x + y
-
