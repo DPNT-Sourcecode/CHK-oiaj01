@@ -22,7 +22,10 @@ def test_does_checkout_with_multiple_items_with_discounts() -> None:
     assert checkout_solution.checkout("BBBAA") == 175
 
 def test_handle_cross_referenced_discounts() -> None:
-    ...
+    assert checkout_solution.checkout("EEB") == 80
+    assert checkout_solution.checkout("EEEB") == 120
+    assert checkout_solution.checkout("EEEEBB") == 160
+    assert checkout_solution.checkout("BEBEEE") == 160
 
 def test_does_checkout_with_invalid_items() -> None:
     assert checkout_solution.checkout("Z") == -1
