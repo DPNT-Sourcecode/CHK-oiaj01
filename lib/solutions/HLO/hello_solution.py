@@ -5,4 +5,4 @@
 def hello(friend_name: str) -> str:
     assert isinstance(friend_name, str), "friend_name must be a string"
 
-    return "Hello, World!"
+    return f"Hello, {friend_name}!"
