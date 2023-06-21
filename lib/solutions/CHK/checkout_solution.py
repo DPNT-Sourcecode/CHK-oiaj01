@@ -31,13 +31,17 @@ DISCOUNTS = {
     "B": {
         "quantity": 2,
         "price": 45
-    },
+    }
+}
+
+GIVEAWAYS = {
     "E": {
         "quantity": 2,
-        "price": None,
         "free_item": "B"
     }
 }
+
+
 def checkout(skus: str):
     print(f"skus: {skus}")
     skus_list = sorted(list(skus))
