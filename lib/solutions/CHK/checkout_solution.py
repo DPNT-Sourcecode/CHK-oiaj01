@@ -41,17 +41,13 @@ def checkout(skus: str):
     if any([sku not in PRICES for sku in skus_list]):
         return -1
 
-    for sku in skus_list:
+    for sku in unique_skus:
+        number_of_item = skus_list.count(sku)
         if sku in DISCOUNTS:
-            quantity = skus_list.count(sku)
             discount = DISCOUNTS[sku]
-
-            while quantity >= discount["quantity"]:
+            while number_of_item >= discount["quantity"]:
                 total += discount["price"]
-                quantity -= discount["quantity"]
-
-            total += quantity * PRICES[sku]
-        else:
-            total += PRICES[sku]
+                number_of_item -= discount["quantity"]
+        total += number_of_item * PRICES[sku]
 
     return total
