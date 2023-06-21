@@ -55,13 +55,14 @@ def checkout(skus: str):
             if "free_item" in discount:
                 free_item_index = discount["free_item"]
                 number_of_free_items = number_of_item // discount["quantity"]
-                print(f"number_of_free_items qualified for {number_of_free_items}")
                 if free_item_index in unique_skus:
-                    print(f"there are {skus_list.count(free_item_index)} items {free_item_index} in the list")
                     number_of_free_items = min(number_of_free_items, skus_list.count(free_item_index))
-                    print(f"getting {number_of_free_items} free items {free_item_index} free")
                     total -= number_of_free_items * PRICES[free_item_index]
-                    print(f"subtracted {number_of_free_items * PRICES[free_item_index]} from total")
+                if free_item_index in DISCOUNTS:
+                    free_item_discount = DISCOUNTS[free_item_index]
+                    number_of_discounts_to_negate = skus_list.count(free_item_index) // free_item_discount["quantity"]
+                    total += number_of_discounts_to_negate * free_item_discount["price"]
+
             else:    
                 while number_of_item >= discount["quantity"]:
                     total += discount["price"]
