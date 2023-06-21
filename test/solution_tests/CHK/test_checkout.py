@@ -21,5 +21,8 @@ def test_does_checkout_with_multiple_items_with_discounts() -> None:
     assert checkout_solution.checkout("BBB") == 75
     assert checkout_solution.checkout("BBBAA") == 175
 
+def test_handle_cross_referenced_discounts() -> None:
+    ...
+
 def test_does_checkout_with_invalid_items() -> None:
-    assert checkout_solution.checkout("E") == -1
+    assert checkout_solution.checkout("Z") == -1

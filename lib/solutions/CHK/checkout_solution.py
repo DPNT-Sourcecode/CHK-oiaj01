@@ -4,14 +4,15 @@
 # skus = unicode string
 
 """
-+------+-------+----------------+
-| Item | Price | Special offers |
-+------+-------+----------------+
-| A    | 50    | 3A for 130     |
-| B    | 30    | 2B for 45      |
-| C    | 20    |                |
-| D    | 15    |                |
-+------+-------+----------------+
++------+-------+------------------------+
+| Item | Price | Special offers         |
++------+-------+------------------------+
+| A    | 50    | 3A for 130, 5A for 200 |
+| B    | 30    | 2B for 45              |
+| C    | 20    |                        |
+| D    | 15    |                        |
+| E    | 40    | 2E get one B free      |
++------+-------+------------------------+
 """
 from enum import unique
 
@@ -20,7 +21,8 @@ PRICES = {
     "A": 50,
     "B": 30,
     "C": 20,
-    "D": 15
+    "D": 15,
+    "E": 40
 }
 
 DISCOUNTS = {
@@ -31,6 +33,11 @@ DISCOUNTS = {
     "B": {
         "quantity": 2,
         "price": 45
+    },
+    "E": {
+        "quantity": 2,
+        "price": None,
+        "free_item": "B"
     }
 }
 def checkout(skus: str):
