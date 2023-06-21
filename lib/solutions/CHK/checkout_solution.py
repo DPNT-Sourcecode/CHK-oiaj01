@@ -14,8 +14,6 @@
 | E    | 40    | 2E get one B free      |
 +------+-------+------------------------+
 """
-from enum import unique
-
 
 PRICES = {
     "A": 50,
@@ -57,6 +55,7 @@ def checkout(skus: str):
                 number_of_free_items = number_of_item // discount["quantity"]
                 if free_item_index in unique_skus:
                     number_of_free_items = min(number_of_free_items, skus_list.count(free_item_index))
+                    print(f"getting {number_of_free_items} free items {free_item_index}")
                     total -= number_of_free_items * PRICES[free_item_index]
             else:    
                 while number_of_item >= discount["quantity"]:
@@ -65,4 +64,3 @@ def checkout(skus: str):
         total += number_of_item * PRICES[sku]
 
     return total
-
